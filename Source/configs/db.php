@@ -7,24 +7,27 @@ use MongoDB\Driver\Cursor;
 use MongoDB\Driver\Manager;
 
 class DB{
-    private static $mongoInstance = NULL;
+    private static $mongoClient = NULL;
     private static $redisInstance = NULL;
     // config Mongodb
     public static function getMongoDBInstance($database,$collection){
-        if (!isset(self::$mongoInstance))
+        if (!isset(self::$mongoClient))
             try {
-                $mongoClient = new MongoDB\Client('mongodb://localhost:27017'); // Thay đổi host và port nếu cần thiết
+                self::$mongoClient = new MongoDB\Client('mongodb://localhost:27017'); // Thay đổi host và port nếu cần thiết
                 
             
             } catch (Exception $ex) {
                 die($ex->getMessage());
+
             }
+            $database = self::$mongoClient->$database;
+            $mongoInstance = $database->$collection;
+            return $mongoInstance;
         }
-        $database = $mongoClient->$database;
-        self::$mongoInstance = $database->$collection;
-        return self::$mongoInstance;
+       
+    
    
-    }
+    
 
         
         
