@@ -1,0 +1,51 @@
+db.createCollection("accounts")
+
+db.accounts.insertOne({
+    "username": "user_1",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_2",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_3",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_4",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_5",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_6",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_7",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_8",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_9",
+    "password": "password"
+})
+
+db.accounts.insertOne({
+    "username": "user_10",
+    "password": "password"
+})

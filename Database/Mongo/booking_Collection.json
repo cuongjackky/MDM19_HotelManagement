@@ -1,0 +1,64 @@
+db.createCollection("bookings")
+
+db.bookings.insertMany([
+{
+"hotel_name": "Khach san A",
+"guest_name": "Nguyen Van A",
+"checkin_date": "2023-07-01",
+"checkout_date": "2023-07-05"
+},
+{
+"hotel_name": "Khach san B",
+"guest_name": "Tran Thi B",
+"checkin_date": "2023-07-10",
+"checkout_date": "2023-07-12"
+},
+{
+"hotel_name": "Khach san C",
+"guest_name": "Le Van C",
+"checkin_date": "2023-07-15",
+"checkout_date": "2023-07-20"
+},
+{
+"hotel_name": "Khach san D",
+"guest_name": "Nguyen Thi D",
+"checkin_date": "2023-08-01",
+"checkout_date": "2023-08-05"
+},
+{
+"hotel_name": "Khach san E",
+"guest_name": "Tran Van E",
+"checkin_date": "2023-08-10",
+"checkout_date": "2023-08-12"
+},
+{
+"hotel_name": "Khach san F",
+"guest_name": "Le Thi F",
+"checkin_date": "2023-08-15",
+"checkout_date": "2023-08-20"
+},
+{
+"hotel_name": "Khach san G",
+"guest_name": "Nguyen Van G",
+"checkin_date": "2023-09-01",
+"checkout_date": "2023-09-05"
+},
+{
+"hotel_name": "Khach san H",
+"guest_name": "Tran Thi H",
+"checkin_date": "2023-09-10",
+"checkout_date": "2023-09-12"
+},
+{
+"hotel_name": "Khach san I",
+"guest_name": "Le Van I",
+"checkin_date": "2023-09-15",
+"checkout_date": "2023-09-20"
+},
+{
+"hotel_name": "Khach san K",
+"guest_name": "Nguyen Thi K",
+"checkin_date": "2023-10-01",
+"checkout_date": "2023-10-05"
+}
+])
