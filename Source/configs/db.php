@@ -11,18 +11,18 @@ class DB{
     private static $redisInstance = NULL;
     // config Mongodb
     public static function getMongoDBInstance($database,$collection){
-        if (!isset(self::$mongoClient))
+        if (!isset(self::$mongoClient)){
             try {
-                self::$mongoClient = new MongoDB\Client('mongodb://localhost:27017'); // Thay đổi host và port nếu cần thiết
-                
-            
+                self::$mongoClient = new MongoDB\Client('mongodb://localhost:27017'); // Thay đổi host và port nếu cần thiết   
+
             } catch (Exception $ex) {
                 die($ex->getMessage());
-
             }
-            $database = self::$mongoClient->$database;
-            $mongoInstance = $database->$collection;
-            return $mongoInstance;
+        }
+            
+        $database = self::$mongoClient->$database;
+        $mongoInstance = $database->$collection;
+        return $mongoInstance;
         }
        
     
@@ -45,8 +45,8 @@ class DB{
             } catch (Exception $ex) {
                 die($ex->getMessage());
             }
-      }
-      return self::$redisInstance;
+        }
+        return self::$redisInstance;
         
     }
 
