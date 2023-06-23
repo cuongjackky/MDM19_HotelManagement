@@ -10,7 +10,7 @@ if(!defined('DirectAccess')) {
 
 class userController {
     public function login($un, $pw) {
-        $user = UserModel::getUserByUn($un);
+        $user = UserModel::getUserByUn($un,$pw);
         if (!$user) {
             include_once('./view/partials/htmlHead.php');
             echo '<form action="index.php" method="" class="m-2">' .

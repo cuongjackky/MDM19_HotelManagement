@@ -3,7 +3,7 @@
 if(!defined('DirectAccess')) {
     die('Direct access not permitted');
 }
-
+require_once "./configs/db.php";
 class UserModel {
     public $userid;
     public $username;
@@ -14,8 +14,22 @@ class UserModel {
         
     }
 
-    public static function getUserByUn($un) {
-        return true;
+    public static function getUserByUn($un,$pw) {
+        $database = "MDM";
+        $collection = "accounts";
+        $mongo = DB::getMongoDBInstance($database,$collection);
+        $filter = ['username'   =>  $un,
+                    'password'  =>  $pw];
+        $result = $mongo->findOne($filter);
+
+        
+        
+
+        if ($result != null) {
+            return true;
+        }
+        else return false;
+
     }
 
     

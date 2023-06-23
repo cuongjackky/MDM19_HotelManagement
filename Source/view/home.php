@@ -1,4 +1,5 @@
 <?php
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -17,7 +18,8 @@ include_once('./view/partials/htmlHead.php');
     include_once('./view/partials/header.php');
     include_once('./view/partials/nav.php');
     
-    echo "<h1 class='text-center m-5'>Hello " . $_SESSION['username'] . "</h1>";
+   
+   
     include_once('./view/partials/footer.php');
     ?>
 </div>
