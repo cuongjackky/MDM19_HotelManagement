@@ -35,9 +35,25 @@ include_once('./view/partials/htmlHead.php');
                             <input name="pw" type="password" class="form-control pw" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
-                        <div class="form-floating mb-5">
+                        <div class="form-floating mb-3">
                             <input type="password" class="form-control con_pw" id="floatingPassword" placeholder="Confirm password">
                             <label for="floatingPassword">Confirm password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input name="name" type="text" class="form-control pw" id="floatingPassword" placeholder="Full Name">
+                            <label for="floatingInput">Full Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input name="email" type="text" class="form-control pw" id="floatingPassword" placeholder="Email">
+                            <label for="floatingInput">Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input name="phone" type="text" class="form-control pw" id="floatingPassword" placeholder="Phone Number">
+                            <label for="floatingInput">Phone Number</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input name="address" type="text" class="form-control pw" id="floatingPassword" placeholder="Address">
+                            <label for="floatingInput">Address</label>
                         </div>
                         <div class="d-grid">
                             <input name='action' value="signup" hidden>
