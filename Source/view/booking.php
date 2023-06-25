@@ -33,7 +33,7 @@ include_once('./view/partials/htmlHead.php');
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="text-center mb-4">Choose Hotel</h1>
+                            <h1 class="text-center mb-4">Chọn khách sạn</h1>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="hotelName" id="hotelInput"
                                     placeholder="Enter hotel name" value="<?php echo $hotelName; ?>" readonly>
@@ -44,7 +44,7 @@ include_once('./view/partials/htmlHead.php');
                     <div id="hotelInfo" class="card mt-5 <?php echo (!empty($hotels)) ? '' : 'd-none'; ?>">
 
                         <div class="card-body">
-                            <h2>Hotel Information</h2>
+                            <h2>Thông tin khách sạn</h2>
                             <?php if (!empty($hotels)) : ?>
                             <p><strong>Name:</strong> <span id="hotelName"><?php echo $hotels[0]['name']; ?></span></p>
                             <p><strong>Address:</strong> <span
@@ -74,12 +74,12 @@ include_once('./view/partials/htmlHead.php');
 
                     <div class="row">
                         <div class="col">
-                            <label for="checkinDate">Check-in Date:</label>
+                            <label for="checkinDate">Ngày Check-in:</label>
                             <input class="form-control input-sm" type="text" name="checkinDate" id="checkinDate"
                                 value="<?php echo $checkinDate; ?>" readonly>
                         </div>
                         <div class="col">
-                            <label for="checkoutDate">Check-out Date:</label>
+                            <label for="checkoutDate">Ngày Check-out:</label>
                             <input class="form-control input-sm" type="text" name="checkoutDate" id="checkoutDate"
                                 value="<?php echo $checkoutDate; ?>" readonly>
                         </div>
@@ -88,7 +88,7 @@ include_once('./view/partials/htmlHead.php');
                     <div class="row mt-5">
                         <div class="col text-center">
                             <input name='action' value="create_booking" hidden>
-                            <button class="btn btn-primary" id="reserveButton">Reserve</button>
+                            <button class="btn btn-primary" id="reserveButton">Đặt trước</button>
                         </div>
                     </div>
 
@@ -115,26 +115,25 @@ include_once('./view/partials/htmlHead.php');
 
     // Event listener for hotel input change
     $('#hotelInput').on('input', function() {
-    var hotelName = $(this).val();
-    // Send AJAX request to retrieve hotel information
-    $.ajax({
-        url: 'getHotelInfo.php',
-        method: 'POST',
-        data: {
-            hotelName: hotelName
-        },
-        success: function(response) {
-            var hotel = JSON.parse(response);
-            // Display the hotel information
-            displayHotelInfo(hotel);
-            // Show the hotel info card
-            $('#hotelInfo').removeClass('d-none');
-        },
-        error: function(xhr, status, error) {
-            console.log(error);
-        }
-    });
-    });
+        var hotelName = $(this).val();
+        // Send AJAX request to retrieve hotel information
+        $.ajax({
+            url: 'getHotelInfo.php',
+            method: 'POST',
+            data: {
+                hotelName: hotelName
+            },
+            success: function(response) {
+                var hotel = JSON.parse(response);
+                // Display the hotel information
+                displayHotelInfo(hotel);
+                // Show the hotel info card
+                $('#hotelInfo').removeClass('d-none');
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
     });
     </script>
 

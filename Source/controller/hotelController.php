@@ -63,7 +63,12 @@ class HotelController
 
         if ($result) {
             include_once('./view/partials/htmlHead.php');
-            echo "<div class='text-center'><h5 class='text-success'>Hotel booking updated.</h5></div>";
+            echo "<div class='text-center'><h5 class='text-success'>Hotel booking updated.</h5>";
+            echo "<form action='index.php' method='POST'>";
+            echo "<input type='hidden' name='action' value='home'>";
+            echo "<button type='submit' class='btn btn-primary'>Quay lại</button>";
+            echo "</form>";
+            echo "</div>";
         } else {
             include_once('./view/partials/htmlHead.php');
             echo "<div class='text-center'><h5 class='text-danger'>Failed to update hotel booking.</h5></div>";
