@@ -36,6 +36,7 @@ class userController
     public function logout()
     {
         unset($_SESSION['username']);
+        unset($_SESSION['nameOfuser']);
 
         //header('Location: ./view/login.php');
         require('./view/login.php');
