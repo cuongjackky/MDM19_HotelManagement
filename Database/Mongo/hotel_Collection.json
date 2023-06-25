@@ -2,83 +2,205 @@ db.createCollection("hotels")
 
 db.hotels.insertMany([
 {
-"name": "Khach san A",
-"address": "123 Duong Hoang Sa, P. Da Kao, Q. 1, TP. HCM",
-"description": "Khach san sang trong voi day du cac tien nghi hien dai",
-"amenities": ["wifi", "be boi", "nha hang", "phong tap gym"],
-"num_rooms": 100,
-"price": 2000000
+    "name" : "Khach san A",
+    "address" : "123 Duong Hoang Sa, P. Da Kao, Q. 1, TP. HCM",
+    "description" : "Khach san sang trong voi day du cac tien nghi hien dai",
+    "amenities" : [
+            "wifi",
+            "be boi",
+            "nha hang",
+            "phong tap gym"
+    ],
+    "num_rooms" : 100,
+    "price" : 2000000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san A",
+                    "guest_name" : "Nguyen Van A",
+                    "checkin_date" : "2023-07-01",
+                    "checkout_date" : "2023-07-05"
+            }
+    ]
 },
 {
-"name": "Khach san B",
-"address": "456 Duong Le Van Viet, P. Tang Nhon Phu A, Q. 9, TP. HCM",
-"description": "Khach san nam gan trung tam thuong mai",
-"amenities": ["wifi", "be boi", "nha hang"],
-"num_rooms": 50,
-"price": 1500000
+    "name" : "Khach san B",
+    "address" : "456 Duong Le Van Viet, P. Tang Nhon Phu A, Q. 9, TP. HCM",
+    "description" : "Khach san nam gan trung tam thuong mai",
+    "amenities" : [
+            "wifi",
+            "be boi",
+            "nha hang"
+    ],
+    "num_rooms" : 50,
+    "price" : 1500000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san B",
+                    "guest_name" : "Tran Thi B",
+                    "checkin_date" : "2023-07-10",
+                    "checkout_date" : "2023-07-12"
+            }
+    ]
 },
 {
-"name": "Khach san C",
-"address": "789 Duong 3/2, P. 7, Q. 10, TP. HCM",
-"description": "Khach san tien nghi va gia ca phai chang",
-"amenities": ["wifi", "nha hang"],
-"num_rooms": 80,
-"price": 1000000
+    "name" : "Khach san C",
+    "address" : "789 Duong 3/2, P. 7, Q. 10, TP. HCM",
+    "description" : "Khach san tien nghi va gia ca phai chang",
+    "amenities" : [
+            "wifi",
+            "nha hang"
+    ],
+    "num_rooms" : 80,
+    "price" : 1000000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san C",
+                    "guest_name" : "Le Van C",
+                    "checkin_date" : "2023-07-15",
+                    "checkout_date" : "2023-07-20"
+            }
+    ]
 },
 {
-"name": "Khach san D",
-"address": "1010 Duong Nguyen Van Linh, P. Tan Phong, Q. 7, TP. HCM",
-"description": "Khach san gan bo song, view dep",
-"amenities": ["wifi", "be boi", "nha hang", "phong tap gym"],
-"num_rooms": 120,
-"price": 2500000
+    "name" : "Khach san D",
+    "address" : "1010 Duong Nguyen Van Linh, P. Tan Phong, Q. 7, TP. HCM",
+    "description" : "Khach san gan bo song, view dep",
+    "amenities" : [
+            "wifi",
+            "be boi",
+            "nha hang",
+            "phong tap gym"
+    ],
+    "num_rooms" : 120,
+    "price" : 2500000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san D",
+                    "guest_name" : "Nguyen Thi D",
+                    "checkin_date" : "2023-08-01",
+                    "checkout_date" : "2023-08-05"
+            }
+    ]
 },
 {
-"name": "Khach san E",
-"address": "1313 Duong Tran Nao, P. Binh An, Q. 2, TP. HCM",
-"description": "Khach san nam ngay trung tam thanh pho",
-"amenities": ["wifi", "be boi", "nha hang", "phong tap gym"],
-"num_rooms": 150,
-"price": 3000000
+    "name" : "Khach san E",
+    "address" : "1313 Duong Tran Nao, P. Binh An, Q. 2, TP. HCM",
+    "description" : "Khach san nam ngay trung tam thanh pho",
+    "amenities" : [
+            "wifi",
+            "be boi",
+            "nha hang",
+            "phong tap gym"
+    ],
+    "num_rooms" : 150,
+    "price" : 3000000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san E",
+                    "guest_name" : "Tran Van E",
+                    "checkin_date" : "2023-08-10",
+                    "checkout_date" : "2023-08-12"
+            }
+    ]
 },
 {
-"name": "Khach san F",
-"address": "1414 Duong Lac Long Quan, P. 3, Q. 11, TP. HCM",
-"description": "Khach san cao cap voi day du tien nghi",
-"amenities": ["wifi", "be boi", "nha hang", "phong tap gym"],
-"num_rooms": 200,
-"price": 4000000
+    "name" : "Khach san F",
+    "address" : "1414 Duong Lac Long Quan, P. 3, Q. 11, TP. HCM",
+    "description" : "Khach san cao cap voi day du tien nghi",
+    "amenities" : [
+            "wifi",
+            "be boi",
+            "nha hang",
+            "phong tap gym"
+    ],
+    "num_rooms" : 200,
+    "price" : 4000000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san F",
+                    "guest_name" : "Le Thi F",
+                    "checkin_date" : "2023-08-15",
+                    "checkout_date" : "2023-08-20"
+            }
+    ]
 },
 {
-"name": "Khach san G",
-"address": "1515 Duong Phan Van Tri, P. 10, Q. Go Vap, TP. HCM",
-"description": "Khach san gia re tai khu vuc Go Vap",
-"amenities": ["wifi", "nha hang"],
-"num_rooms": 70,
-"price": 800000
+    "name" : "Khach san G",
+    "address" : "1515 Duong Phan Van Tri, P. 10, Q. Go Vap, TP. HCM",
+    "description" : "Khach san gia re tai khu vuc Go Vap",
+    "amenities" : [
+            "wifi",
+            "nha hang"
+    ],
+    "num_rooms" : 70,
+    "price" : 800000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san G",
+                    "guest_name" : "Nguyen Van G",
+                    "checkin_date" : "2023-09-01",
+                    "checkout_date" : "2023-09-05"
+            }
+    ]
 },
 {
-"name": "Khach san H",
-"address": "1616 Duong Nguyen Oanh, P. 10, Q. Go Vap, TP. HCM",
-"description": "Khach san tien nghi voi gia ca phai chang",
-"amenities": ["wifi", "be boi", "nha hang"],
-"num_rooms": 90,
-"price": 1200000
+    "name" : "Khach san H",
+    "address" : "1616 Duong Nguyen Oanh, P. 10, Q. Go Vap, TP. HCM",
+    "description" : "Khach san tien nghi voi gia ca phai chang",
+    "amenities" : [
+            "wifi",
+            "be boi",
+            "nha hang"
+    ],
+    "num_rooms" : 90,
+    "price" : 1200000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san H",
+                    "guest_name" : "Tran Thi H",
+                    "checkin_date" : "2023-09-10",
+                    "checkout_date" : "2023-09-12"
+            }
+    ]
 },
 {
-"name": "Khach san I",
-"address": "1717 Duong Luong Dinh Cua, P. An Phu, Q. 2, TP. HCM",
-"description": "Khach san sang trong voi view dep",
-"amenities": ["wifi", "be boi", "nha hang", "phong tap gym"],
-"num_rooms": 180,
-"price": 3500000
+    "name" : "Khach san I",
+    "address" : "1717 Duong Luong Dinh Cua, P. An Phu, Q. 2, TP. HCM",
+    "description" : "Khach san sang trong voi view dep",
+    "amenities" : [
+            "wifi",
+            "be boi",
+            "nha hang",
+            "phong tap gym"
+    ],
+    "num_rooms" : 180,
+    "price" : 3500000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san I",
+                    "guest_name" : "Le Van I",
+                    "checkin_date" : "2023-09-15",
+                    "checkout_date" : "2023-09-20"
+            }
+    ]
 },
 {
-"name": "Khach san K",
-"address": "1818 Duong Nguyen Trai, P. Nguyen Cu Trinh, Q. 1, TP. HCM",
-"description": "Khach san nam gan trung tam thanh pho",
-"amenities": ["wifi", "nha hang"],
-"num_rooms": 60,
-"price": 900000
+    "name" : "Khach san K",
+    "address" : "1818 Duong Nguyen Trai, P. Nguyen Cu Trinh, Q. 1, TP. HCM",
+    "description" : "Khach san nam gan trung tam thanh pho",
+    "amenities" : [
+            "wifi",
+            "nha hang"
+    ],
+    "num_rooms" : 60,
+    "price" : 900000,
+    "bookings" : [
+            {
+                    "hotel_name" : "Khach san K",
+                    "guest_name" : "Nguyen Thi K",
+                    "checkin_date" : "2023-10-01",
+                    "checkout_date" : "2023-10-05"
+            }
+    ]
 }
 ])
