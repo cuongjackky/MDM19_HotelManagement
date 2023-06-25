@@ -105,27 +105,29 @@ class HotelModel
         $database = "MDM";
         $collection = "hotels";
         $mongo = DB::getMongoDBInstance($database, $collection);
-        $filter = ['bookings.guest_name'   =>  $user_name];
-        $projection = [
-            'bookings.$' => 1
+        $filter =  [
+            'bookings.guest_name' => $user_name
         ];
-        $result = $mongo->find($filter,[
-            'projection' => $projection
-        ]);
+        
+        $result = $mongo->find($filter);
         
         $bookings = [];
         foreach ($result as $document) {
             foreach ($document["bookings"] as $booking) {
+
+                if($booking["guest_name"] == $user_name){
+                    $bookingInfo = [
+                        "hotel_name" => $booking["hotel_name"],
+                        "guest_name" => $booking["guest_name"],
+                        "num_room"  => $booking["num_room"],
+                        "checkin_date" => $booking["checkin_date"],
+                        "checkout_date" => $booking["checkout_date"]
+                    ];
+                    // Thêm mảng booking vào mảng $bookings
+                    $bookings[] = $bookingInfo;
+                }
                 // Tạo một mảng chứa thông tin booking
-                $bookingInfo = [
-                    "hotel_name" => $booking["hotel_name"],
-                    "guest_name" => $booking["guest_name"],
-                    "num_room"  => $booking["num_room"],
-                    "checkin_date" => $booking["checkin_date"],
-                    "checkout_date" => $booking["checkout_date"]
-                ];
-                // Thêm mảng booking vào mảng $bookings
-                $bookings[] = $bookingInfo;
+               
             }
         }
         return $bookings;
