@@ -38,6 +38,20 @@ class userController {
 
         require('./view/userinfo.php');
     }
+    public function signup($un, $pw, $name, $email, $phone, $address)
+    {
+        $isExist = UserModel::IsExistUser($un);
+        if ($isExist) {
+            include_once('./view/partials/htmlHead.php');
+            echo "<h5 class='text-danger'>username is existed.</h5>";
+        } else {
+            $user = UserModel::create($un, $pw, $name, $email, $phone, $address);
+            if($user != null){
+                $_SESSION['username'] = $un;
+                require('./view/home.php');
+            }
+        }
+    }
 
 
 }

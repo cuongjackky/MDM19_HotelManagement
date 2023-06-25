@@ -42,6 +42,7 @@ class UserModel
 
             if ($result != null) {
                 $redis->set($un, serialize($result));
+                $redis->expire($un, 3600);
 
                 $_SESSION['nameOfuser'] = $result['name'];
                 $_SESSION['username'] = $result['username'];
@@ -70,6 +71,7 @@ class UserModel
 
             if ($result != null) {
                 $redis->set($un, serialize($result));
+                $redis->expire($un, 3600);
 
                 $_SESSION['nameOfuser'] = $result['name'];
                 $_SESSION['username'] = $result['username'];
@@ -79,4 +81,30 @@ class UserModel
 
         return null;
     }
+    public static function IsExistUser($un) {
+        $database = "MDM";
+        $collection = "accounts";
+        $mongo = DB::getMongoDBInstance($database,$collection);
+        $filter = ['username'   =>  $un];
+        $result = $mongo->findOne($filter);
+        if ($result != null) {
+            return true;
+        }
+        else return false;
+    }
+    public static function create($un, $pw, $name, $email, $phone, $address) {
+        $database = "MDM";
+        $collection = "accounts";
+        $mongo = DB::getMongoDBInstance($database,$collection);
+        $user = ['username'   =>  $un,
+            'password' => $pw,
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'address' => $address
+            ];
+        $result = $mongo->insertOne($user);
+        return $result;
+    }
+
 }

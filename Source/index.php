@@ -41,7 +41,7 @@ switch ($action) {
         //đăng ký
     case 'signup':
         $controller = new userController();
-        $controller->signup($_REQUEST['un'], $_REQUEST['pw']);
+        $controller->signup($_REQUEST['un'], $_REQUEST['pw'],$_REQUEST['name'],$_REQUEST['email'],$_REQUEST['phone'],$_REQUEST['address']);
         break;
         //back home
     case 'home':

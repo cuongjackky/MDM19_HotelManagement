@@ -1,51 +1,82 @@
 db.createCollection("accounts")
 
-db.accounts.insertOne({
+db.accounts.insertMany([{
+    "name": "Nguyen Van A",
+    "email": "nguyenvana@gmail.com",
+    "phone": "0987654321",
+    "address": "123 Duong Nguyen Van A, Quan 1, TP. HCM",
     "username": "user_1",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Tran Thi B",
+    "email": "tranthib@gmail.com",
+    "phone": "0987654322",
+    "address": "456 Duong Tran Thi B, Quan 2, TP. HCM",
     "username": "user_2",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Le Van C",
+    "email": "levanc@gmail.com",
+    "phone": "0987654323",
+    "address": "789 Duong Le Van C, Quan 3, TP. HCM",
     "username": "user_3",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Nguyen Thi D",
+    "email": "nguyenthid@gmail.com",
+    "phone": "0987654324",
+    "address": "1010 Duong Nguyen Thi D, Quan 4, TP. HCM",
     "username": "user_4",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Tran Van E",
+    "email": "tranvane@gmail.com",
+    "phone": "0987654325",
+    "address": "1313 Duong Tran Van E, Quan 5, TP. HCM",
     "username": "user_5",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Le Thi F",
+    "email": "lethif@gmail.com",
+    "phone": "0987654326",
+    "address": "1414 Duong Le Thi F, Quan 6, TP. HCM",
     "username": "user_6",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Nguyen Van G",
+    "email": "nguyenvang@gmail.com",
+    "phone": "0987654327",
+    "address": "1515 Duong Nguyen Van G, Quan 7, TP. HCM",
     "username": "user_7",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Tran Thi H",
+    "email": "tranthih@gmail.com",
+    "phone": "0987654328",
+    "address": "1616 Duong Tran Thi H, Quan 8, TP. HCM",
     "username": "user_8",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Le Van I",
+    "email": "levani@gmail.com",
+    "phone": "0987654329",
+    "address": "1717 Duong Le Van I, Quan 9, TP. HCM",
     "username": "user_9",
     "password": "password"
-})
-
-db.accounts.insertOne({
+ },
+ {
+    "name": "Nguyen Thi K",
+    "email": "nguyenthik@gmail.com",
+    "phone": "0987654330",
+    "address": "1818 Duong Nguyen Thi K, Quan 10, TP. HCM",
     "username": "user_10",
     "password": "password"
-})
+ }])
