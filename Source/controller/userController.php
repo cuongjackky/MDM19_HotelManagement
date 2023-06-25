@@ -4,13 +4,20 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 //ko cho access directly = http
-if(!defined('DirectAccess')) {
+if (!defined('DirectAccess')) {
     die('Direct access not permitted');
 }
 
-class userController {
-    public function login($un, $pw) {
-        $user = UserModel::getUserByUn($un,$pw);
+class userController
+{
+    function __construct()
+    {
+        $redis = DB::getRedisInstance();
+    }
+
+    public function login($un, $pw)
+    {
+        $user = UserModel::getUserByUn($un, $pw);
         if (!$user) {
             include_once('./view/partials/htmlHead.php');
             echo '<form action="index.php" method="" class="m-2">' .
@@ -26,9 +33,10 @@ class userController {
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         unset($_SESSION['username']);
-       
+
         //header('Location: ./view/login.php');
         require('./view/login.php');
         //exit();
@@ -53,7 +61,7 @@ class userController {
         }
     }
 
-
+   
 }
 
 ?>

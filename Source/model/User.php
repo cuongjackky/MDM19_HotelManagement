@@ -88,6 +88,7 @@ class UserModel
         $filter = ['username'   =>  $un];
         $result = $mongo->findOne($filter);
         if ($result != null) {
+            $redis->set($key, $result, 300);
             return true;
         }
         else return false;
