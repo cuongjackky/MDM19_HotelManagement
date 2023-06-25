@@ -84,6 +84,8 @@ switch ($action) {
     case 'create_booking':
         $controller = new bookingController();
         $controller->createBooking($_REQUEST['hotelName'], $_REQUEST['guestName'], $_REQUEST['checkinDate'], $_REQUEST['checkoutDate']);
+        $hotelController = new hotelController();
+        $hotelController->updateHotelBooking($_REQUEST['hotelName'], $_REQUEST['guestName'], $_REQUEST['checkinDate'], $_REQUEST['checkoutDate']);
         break;
     default:
         //header('Location: ');

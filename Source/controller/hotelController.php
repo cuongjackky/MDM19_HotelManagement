@@ -35,7 +35,7 @@ class HotelController
             <div class= 'd-grid'>
                 <input name='action' value= 'reservation' hidden>
                 <input name ='hotelName' value = '" . $hotel['name'] . "' hidden>
-                <input name ='guestName' vaue = '" . $_SESSION['nameOfuser'] . "' hidden>
+                <input name ='guestName' value = '" . $_SESSION['nameOfuser'] . "' hidden>
                 <input name='checkinDate' value = '" . $dcheck_in . "' hidden>
                 <input name='checkoutDate' value = '" . $dcheck_out . "' hidden>
                 <button class= 'btn btn-primary btn-login text-uppercase fw-bold' type='submit'>Đặt chỗ</button>
@@ -46,5 +46,27 @@ class HotelController
         $html .= "</tbody></table>";
 
         echo $html;
+    }
+
+    public function updateHotelBooking($hotelName, $guestName, $checkinDate, $checkoutDate)
+    {
+        // Lấy thông tin từ yêu cầu POST
+        $hotelName = $_POST['hotelName'];
+        $guestName = $_POST['guestName'];
+        $checkinDate = $_POST['checkinDate'];
+        $checkoutDate = $_POST['checkoutDate'];
+
+        require_once './model/Hotel.php';
+        $hotelModel = new HotelModel();
+        // Cập nhật thông tin đặt phòng khách sạn
+        $result = $hotelModel->updateHotelBooking($hotelName, $guestName, $checkinDate, $checkoutDate);
+
+        if ($result) {
+            include_once('./view/partials/htmlHead.php');
+            echo "<div class='text-center'><h5 class='text-success'>Hotel booking updated.</h5></div>";
+        } else {
+            include_once('./view/partials/htmlHead.php');
+            echo "<div class='text-center'><h5 class='text-danger'>Failed to update hotel booking.</h5></div>";
+        }
     }
 }

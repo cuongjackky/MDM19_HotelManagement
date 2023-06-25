@@ -35,7 +35,8 @@ include_once('./view/partials/htmlHead.php');
                         <div class="card-body">
                             <h1 class="text-center mb-4">Choose Hotel</h1>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="hotelName" id="hotelInput" placeholder="Enter hotel name" value="<?php echo $hotelName; ?>">
+                                <input class="form-control" type="text" name="hotelName" id="hotelInput"
+                                    placeholder="Enter hotel name" value="<?php echo $hotelName; ?>" readonly>
                                 <ul class="list-group mt-2 w-100" id="hotelSuggestions"></ul>
                             </div>
                         </div>
@@ -45,14 +46,18 @@ include_once('./view/partials/htmlHead.php');
                         <div class="card-body">
                             <h2>Hotel Information</h2>
                             <?php if (!empty($hotels)) : ?>
-                                <p><strong>Name:</strong> <span id="hotelName"><?php echo $hotels[0]['name']; ?></span></p>
-                                <p><strong>Address:</strong> <span id="hotelAddress"><?php echo $hotels[0]['address']; ?></span></p>
-                                <p><strong>Description:</strong> <span id="hotelDescription"><?php echo $hotels[0]['description']; ?></span></p>
-                                <p><strong>Amenities:</strong> <span id="hotelAmenities"><?php echo implode(', ', $hotels[0]['amenities']->bsonSerialize()); ?></span>
-                                </p>
-                                <p><strong>Number of Rooms:</strong> <span id="hotelNumRooms"><?php echo $hotels[0]['num_rooms']; ?></span></p>
-                                <p><strong>Price:</strong> <span id="hotelPrice"><?php echo $hotels[0]['price']; ?></span>
-                                </p>
+                            <p><strong>Name:</strong> <span id="hotelName"><?php echo $hotels[0]['name']; ?></span></p>
+                            <p><strong>Address:</strong> <span
+                                    id="hotelAddress"><?php echo $hotels[0]['address']; ?></span></p>
+                            <p><strong>Description:</strong> <span
+                                    id="hotelDescription"><?php echo $hotels[0]['description']; ?></span></p>
+                            <p><strong>Amenities:</strong> <span
+                                    id="hotelAmenities"><?php echo implode(', ', $hotels[0]['amenities']->bsonSerialize()); ?></span>
+                            </p>
+                            <p><strong>Number of Rooms:</strong> <span
+                                    id="hotelNumRooms"><?php echo $hotels[0]['num_rooms']; ?></span></p>
+                            <p><strong>Price:</strong> <span id="hotelPrice"><?php echo $hotels[0]['price']; ?></span>
+                            </p>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -62,20 +67,24 @@ include_once('./view/partials/htmlHead.php');
                     <div class="container">
                         <div class="row"></div>
                         <div class="col">
-                            <input class="form-control input-sm" type="text" name="guestName" id="guestName" value="<?php echo $guestName; ?>" hidden>
+                            <input class="form-control input-sm" type="text" name="guestName" id="guestName"
+                                value="<?php echo $guestName; ?>" hidden>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <label for="checkinDate">Check-in Date:</label>
-                            <input class="form-control input-sm" type="text" name="checkinDate" id="checkinDate" value="<?php echo $checkinDate; ?>" readonly>
+                            <input class="form-control input-sm" type="text" name="checkinDate" id="checkinDate"
+                                value="<?php echo $checkinDate; ?>" readonly>
                         </div>
                         <div class="col">
                             <label for="checkoutDate">Check-out Date:</label>
-                            <input class="form-control input-sm" type="text" name="checkoutDate" id="checkoutDate" value="<?php echo $checkoutDate; ?>" readonly>
+                            <input class="form-control input-sm" type="text" name="checkoutDate" id="checkoutDate"
+                                value="<?php echo $checkoutDate; ?>" readonly>
                         </div>
                     </div>
+
                     <div class="row mt-5">
                         <div class="col text-center">
                             <input name='action' value="create_booking" hidden>
@@ -94,52 +103,39 @@ include_once('./view/partials/htmlHead.php');
 
 
     <script>
-        $(document).ready(function() {
-            $('#checkinDate').datepicker({
-                format: 'yyyy-mm-dd',
-                startDate: 'today',
-                autoclose: true
-            }).addClass('datepicker-sm');
+    // Function to display all hotel information
+    function displayHotelInfo(hotel) {
+        $('#hotelName').text(hotel.name);
+        $('#hotelAddress').text(hotel.address);
+        $('#hotelDescription').text(hotel.description);
+        $('#hotelAmenities').text(hotel.amenities.join(', '));
+        $('#hotelNumRooms').text(hotel.num_rooms);
+        $('#hotelPrice').text(hotel.price);
+    }
 
-            $('#checkoutDate').datepicker({
-                format: 'yyyy-mm-dd',
-                startDate: 'today',
-                autoclose: true
-            }).addClass('datepicker-sm');
-
-            // Function to display all hotel information
-            function displayHotelInfo(hotel) {
-                $('#hotelName').text(hotel.name);
-                $('#hotelAddress').text(hotel.address);
-                $('#hotelDescription').text(hotel.description);
-                $('#hotelAmenities').text(hotel.amenities.join(', '));
-                $('#hotelNumRooms').text(hotel.num_rooms);
-                $('#hotelPrice').text(hotel.price);
-            }
-
-            // Event listener for hotel input change
-            $('#hotelInput').on('input', function() {
-                var hotelName = $(this).val();
-                // Send AJAX request to retrieve hotel information
-                $.ajax({
-                    url: 'getHotelInfo.php',
-                    method: 'POST',
-                    data: {
-                        hotelName: hotelName
-                    },
-                    success: function(response) {
-                        var hotel = JSON.parse(response);
-                        // Display the hotel information
-                        displayHotelInfo(hotel);
-                        // Show the hotel info card
-                        $('#hotelInfo').removeClass('d-none');
-                    },
-                    error: function(xhr, status, error) {
-                        console.log(error);
-                    }
-                });
-            });
-        });
+    // Event listener for hotel input change
+    $('#hotelInput').on('input', function() {
+    var hotelName = $(this).val();
+    // Send AJAX request to retrieve hotel information
+    $.ajax({
+        url: 'getHotelInfo.php',
+        method: 'POST',
+        data: {
+            hotelName: hotelName
+        },
+        success: function(response) {
+            var hotel = JSON.parse(response);
+            // Display the hotel information
+            displayHotelInfo(hotel);
+            // Show the hotel info card
+            $('#hotelInfo').removeClass('d-none');
+        },
+        error: function(xhr, status, error) {
+            console.log(error);
+        }
+    });
+    });
+    });
     </script>
 
 </body>

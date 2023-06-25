@@ -79,4 +79,24 @@ class HotelModel
 
         return $hotels;
     }
+
+    public function updateHotelBooking($hotelName, $guestName, $checkinDate, $checkoutDate)
+    {
+        $database = "MDM";
+        $collection = "hotels";
+        $mongo = DB::getMongoDBInstance($database, $collection);
+
+        $booking = [
+            'hotel_name' => $hotelName,
+            'guest_name' => $guestName,
+            'checkin_date' => $checkinDate,
+            'checkout_date' => $checkoutDate
+        ];
+
+        $filter = ['name' => $hotelName];
+        $update = ['$push' => ['bookings' => $booking]];
+        $result = $mongo->updateOne($filter, $update);
+
+        return $result;
+    }
 }
