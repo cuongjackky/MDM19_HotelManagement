@@ -1,10 +1,11 @@
 <?php
 //ko cho access directly = http
-if(!defined('DirectAccess')) {
+if (!defined('DirectAccess')) {
     die('Direct access not permitted');
 }
 require_once "./configs/db.php";
-class UserModel {
+class UserModel
+{
     public $name;
     public $email;
     public $phone;
@@ -13,30 +14,31 @@ class UserModel {
     public $password;
 
 
-    function __construct() {
-        
+    function __construct()
+    {
     }
 
-    public static function getUserByUn($un,$pw) {
+    public static function getUserByUn($un, $pw)
+    {
         $database = "MDM";
-        $collection = "users";
+        $collection = "accounts";
 
         $redis = DB::getRedisInstance();
 
-        if($redis->exists($un)){
+        if ($redis->exists($un)) {
             $data = unserialize($redis->get($un));
             $_SESSION['nameOfuser'] = $data['name'];
             $_SESSION['username'] = $data['username'];
             return true;
-
-        }
-        else{
-            $mongo = DB::getMongoDBInstance($database,$collection);
-            $filter = ['username'   =>  $un,
-                        'password'  =>  $pw];
+        } else {
+            $mongo = DB::getMongoDBInstance($database, $collection);
+            $filter = [
+                'username'   =>  $un,
+                'password'  =>  $pw
+            ];
             $result = $mongo->findOne($filter);
-                      
-            
+
+
 
             if ($result != null) {
                 $redis->set($un, serialize($result));
@@ -46,26 +48,25 @@ class UserModel {
                 return true;
             }
         }
-        
-        return false;
 
+        return false;
     }
-    public static function getUserInfoByUn($un){
+    public static function getUserInfoByUn($un)
+    {
         $redis = DB::getRedisInstance();
-        if($redis->exists($un)){
+        if ($redis->exists($un)) {
             $data = unserialize($redis->get($un));
             return $data;
-
-        }
-        else{
+        } else {
             $database = "MDM";
-            $collection = "users";
-            $mongo = DB::getMongoDBInstance($database,$collection);
-            $filter = ['username'   =>  $un,
-                        ];
+            $collection = "accounts";
+            $mongo = DB::getMongoDBInstance($database, $collection);
+            $filter = [
+                'username'   =>  $un,
+            ];
             $result = $mongo->findOne($filter);
-                      
-            
+
+
 
             if ($result != null) {
                 $redis->set($un, serialize($result));
@@ -75,12 +76,7 @@ class UserModel {
                 return $result;
             }
         }
-        
+
         return null;
     }
-
-
-    
 }
-
-?>

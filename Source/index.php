@@ -14,36 +14,36 @@ require_once('./controller/hotelController.php');
 require_once('./model/Hotel.php');
 
 $action = "";
-if (isset($_REQUEST['action'])){
+if (isset($_REQUEST['action'])) {
     $action = $_REQUEST['action'];
 }
 
 //if still in session, go to home instead of login 
-if (isset($_SESSION['username']) && $action == ""){
+if (isset($_SESSION['username']) && $action == "") {
     $action = "home";
 }
 
 switch ($action) {
-    //đăng nhập
+        //đăng nhập
     case 'signin':
         $controller = new userController();
         $controller->login($_REQUEST['un'], $_REQUEST['pw']);
         break;
-    //đăng xuất
+        //đăng xuất
     case 'signout':
         $controller = new userController();
         $controller->logout();
         break;
-    //đến trang đăng ký
+        //đến trang đăng ký
     case 'signup_page':
         require('./view/signup.php');
         break;
-    //đăng ký
+        //đăng ký
     case 'signup':
         $controller = new userController();
         $controller->signup($_REQUEST['un'], $_REQUEST['pw']);
         break;
-    //back home
+        //back home
     case 'home':
         //header('Location: ');
         require('./view/home.php');
@@ -61,7 +61,7 @@ switch ($action) {
         $max_price = $_POST['maxPrice'];
         $min_price = $_POST['minPrice'];
 
-        $controller->searchHotel($dia_chi,$dcheck_in,$dcheck_out,$so_phong,$amenities,$max_price,$min_price);
+        $controller->searchHotel($dia_chi, $dcheck_in, $dcheck_out, $so_phong, $amenities, $max_price, $min_price);
         break;
 
     case 'viewInfo':
@@ -78,13 +78,15 @@ switch ($action) {
         break;
 
     case 'reservation':
-        $nameUser = $_REQUEST['username'];
-        // mấy cái còn lại
+        //header('Location: ');
+        require('./view/booking.php');
+        break;
+    case 'create_booking':
+        $controller = new bookingController();
+        $controller->createBooking($_REQUEST['hotelName'], $_REQUEST['guestName'], $_REQUEST['checkinDate'], $_REQUEST['checkoutDate']);
         break;
     default:
         //header('Location: ');
         require('./view/login.php');
         break;
 }
-
-?>
