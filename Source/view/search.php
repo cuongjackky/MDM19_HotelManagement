@@ -62,11 +62,11 @@ include_once('./view/partials/nav.php');
         <label for="checkbox2">Nhà hàng</label>
       </div>
       <div>
-        <input type="checkbox" id="checkbox1" value ="be boi" name ="amenities">
+        <input type="checkbox" id="checkbox3" value ="be boi" name ="amenities">
         <label for="checkbox1">Bể bơi</label>
       </div>
       <div>
-        <input type="checkbox" id="checkbox2" value = "phong tap gym" name ="amenities">
+        <input type="checkbox" id="checkbox4" value = "phong tap gym" name ="amenities">
         <label for="checkbox2">Phòng tập gym</label>
       </div>
       </div>
@@ -187,6 +187,52 @@ $(document).ready(function() {
       }
     });
 
+      $('input[type="checkbox"][name="amenities"]').change(function() {
+
+        let address = $('#addressInput').val();
+        let checkInDate = $('#checkInInput').val();
+        let checkOutDate = $('#checkOutInput').val();
+        let roomCount = $('#roomCountInput').val();
+        let minPrice = $('#minPriceInput').val();
+        let maxPrice = $('#maxPriceInput').val();
+        let selectedAmenities = [];
+        $('input[name="amenities"]:checked').each(function() {
+          selectedAmenities.push($(this).val());
+        });
+
+        if (address === "" || checkInDate === "" || checkOutDate === "" || roomCount === "") {
+          e.preventDefault();
+        } else {
+          // Gửi AJAX request lên server
+
+          // Tạo đối tượng data chứa các thông tin cần gửi
+          let data = {
+            action: "search",
+            address: address,
+            checkInDate: checkInDate,
+            checkOutDate: checkOutDate,
+            roomCount: roomCount,
+            minPrice: minPrice,
+            maxPrice: maxPrice,
+            amenities: selectedAmenities
+          };
+
+          // Gửi AJAX request sử dụng jQuery
+          $.ajax({
+            type: 'POST',
+            url: 'index.php', // Đường dẫn tới file PHP xử lý request
+            data: data,
+            success: function(response) {
+              // Xử lý kết quả trả về từ server
+              $('#tableContainer').html(response);
+            },
+            error: function(xhr, status, error) {
+              // Xử lý lỗi nếu có
+              console.error(error);
+            }
+          });
+        }
+    });
 
     var slider = document.getElementById('slider');
     var minPriceInput = document.getElementById('minPriceInput');
