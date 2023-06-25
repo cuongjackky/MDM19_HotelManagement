@@ -11,17 +11,12 @@ if (!isset($_SESSION['username'])){
 }
 
 include_once('./view/partials/htmlHead.php');
+include_once('./view/partials/header.php');
+include_once('./view/partials/nav.php'); 
 ?>
 <body>
-<div class="container-fluid">
-    <?php
-    include_once('./view/partials/header.php');
-    include_once('./view/partials/nav.php');
-    
-   
-   
-    include_once('./view/partials/footer.php');
-    ?>
-</div>
 </body>
-</html>
+
+
+
+

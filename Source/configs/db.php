@@ -5,6 +5,7 @@ use MongoDB\Client;
 use MongoDB\Driver\ServerApi;
 use MongoDB\Driver\Cursor;
 use MongoDB\Driver\Manager;
+use MongoDB\BSON\Regex;
 
 class DB{
     private static $mongoClient = NULL;
@@ -20,10 +21,10 @@ class DB{
             }
         }
             
-        $database = self::$mongoClient->$database;
-        $mongoInstance = $database->$collection;
+        $database = self::$mongoClient->selectDatabase($database);
+        $mongoInstance = $database->selectCollection($collection);
         return $mongoInstance;
-        }
+    }
        
     
    

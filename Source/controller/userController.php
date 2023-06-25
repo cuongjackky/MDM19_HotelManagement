@@ -20,7 +20,7 @@ class userController {
             "</form>";
         }
         else {
-            $_SESSION['username'] = $un;
+            
             
             require('./view/home.php');
         }
@@ -32,6 +32,11 @@ class userController {
         //header('Location: ./view/login.php');
         require('./view/login.php');
         //exit();
+    }
+    public function getUserInfo($username){
+        $userinfo = UserModel::getUserInfoByUn($username);
+
+        require('./view/userinfo.php');
     }
 
 
