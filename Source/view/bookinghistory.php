@@ -19,6 +19,7 @@ include_once('./view/partials/nav.php');
  
       <th scope="col">Hotel Name</th>
       <th scope="col">Guest Name</th>
+      <th scope="col">Num Room</th>
       <th scope="col">Check In Date</th>
       <th scope="col">Check Out Date</th>
 </tr>
@@ -30,6 +31,7 @@ include_once('./view/partials/nav.php');
      
                <td><?php echo $booking['hotel_name'] ;?></td>
                <td><?php echo $booking['guest_name']; ?></td>
+               <td><?php echo $booking['num_room']; ?></td>
                <td><?php echo $booking['checkin_date'] ;?></td>
                <td><?php echo $booking['checkout_date'] ;?></td>
         </tr>
@@ -43,7 +45,7 @@ include_once('./view/partials/nav.php');
 
   
 </body>
-
+<?php include_once('./view/partials/footer.php');  ?>
 <script>
     // Khởi tạo datetimepicker cho ngày check-in
     $('#checkInInput').datetimepicker({

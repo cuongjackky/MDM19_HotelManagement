@@ -101,7 +101,7 @@ include_once('./view/partials/nav.php');
 
   
 </body>
-
+<?php include_once('./view/partials/footer.php');  ?>
 <script>
 $(document).ready(function() {
   var checkInInput = $('#checkInInput');

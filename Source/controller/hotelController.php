@@ -38,6 +38,7 @@ class HotelController
                 <input name ='guestName' value = '" . $_SESSION['nameOfuser'] . "' hidden>
                 <input name='checkinDate' value = '" . $dcheck_in . "' hidden>
                 <input name='checkoutDate' value = '" . $dcheck_out . "' hidden>
+                <input name='soPhong' value = '" . $so_phong . "' hidden>
                 <button class= 'btn btn-primary btn-login text-uppercase fw-bold' type='submit'>Đặt chỗ</button>
             </div>
             </form></td>";
@@ -48,30 +49,36 @@ class HotelController
         echo $html;
     }
 
-    public function updateHotelBooking($hotelName, $guestName, $checkinDate, $checkoutDate)
+    public function updateHotelBooking($hotelName, $guestName,$numRoom, $checkinDate, $checkoutDate)
     {
         // Lấy thông tin từ yêu cầu POST
-        $hotelName = $_POST['hotelName'];
-        $guestName = $_POST['guestName'];
-        $checkinDate = $_POST['checkinDate'];
-        $checkoutDate = $_POST['checkoutDate'];
+        
+        
 
         require_once './model/Hotel.php';
         $hotelModel = new HotelModel();
         // Cập nhật thông tin đặt phòng khách sạn
-        $result = $hotelModel->updateHotelBooking($hotelName, $guestName, $checkinDate, $checkoutDate);
+        $result = $hotelModel->updateHotelBooking($hotelName, $guestName,$numRoom, $checkinDate, $checkoutDate);
 
         if ($result) {
             include_once('./view/partials/htmlHead.php');
+            include_once('./view/partials/header.php');
+            include_once('./view/partials/nav.php');
             echo "<div class='text-center'><h5 class='text-success'>Hotel booking updated.</h5>";
             echo "<form action='index.php' method='POST'>";
             echo "<input type='hidden' name='action' value='home'>";
             echo "<button type='submit' class='btn btn-primary'>Quay lại</button>";
             echo "</form>";
             echo "</div>";
+            include_once('./view/partials/footer.php');
         } else {
             include_once('./view/partials/htmlHead.php');
             echo "<div class='text-center'><h5 class='text-danger'>Failed to update hotel booking.</h5></div>";
         }
+    }
+    public function getUserBookingHistory($username){
+        $result = HotelModel::getUserBookingHistory($username);
+
+        require('./view/bookinghistory.php');
     }
 }

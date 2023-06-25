@@ -15,11 +15,12 @@ include_once('./view/partials/htmlHead.php');
         require_once('./model/Booking.php');
 
         $bookingModel = new BookingModel();
-        $nameCurrent = $bookingModel->getCurrentUserName();
+        //$nameCurrent = $bookingModel->getCurrentUserName();
 
         // Retrieve values from the POST request
         $hotelName = isset($_POST['hotelName']) ? $_POST['hotelName'] : '';
         $guestName = isset($_POST['guestName']) ? $_POST['guestName'] : '';
+        $num_room = isset($_POST['soPhong']) ? $_POST['soPhong'] : '';
         $checkinDate = isset($_POST['checkinDate']) ? $_POST['checkinDate'] : '';
         $checkoutDate = isset($_POST['checkoutDate']) ? $_POST['checkoutDate'] : '';
 
@@ -87,6 +88,7 @@ include_once('./view/partials/htmlHead.php');
 
                     <div class="row mt-5">
                         <div class="col text-center">
+                            <input name ='num_room' value = "<?php echo $num_room; ?> " hidden>
                             <input name='action' value="create_booking" hidden>
                             <button class="btn btn-primary" id="reserveButton">Đặt trước</button>
                         </div>

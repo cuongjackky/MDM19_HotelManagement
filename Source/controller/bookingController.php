@@ -17,23 +17,26 @@ class BookingController
         require('./view/bookinghistory.php');
     }
 
-    public function createBooking($hotelName, $guestName, $checkinDate, $checkoutDate)
+    public function createBooking($hotelName, $guestName,$numRoom, $checkinDate, $checkoutDate)
     {
         // Get information from the POST request
         $hotelName = $_POST['hotelName'];
         $guestName = $_POST['guestName'];
         $checkinDate = $_POST['checkinDate'];
         $checkoutDate = $_POST['checkoutDate'];
-
+        $numRoom = $_POST['Num_room'];
         require_once './model/Booking.php';
         $bookingModel = new BookingModel();
         // Create a new booking
-        $result = $bookingModel->createBooking($hotelName, $guestName, $checkinDate, $checkoutDate);
+        $result = $bookingModel->createBooking($hotelName, $guestName,$numRoom, $checkinDate, $checkoutDate);
 
         if ($result) {
             // Successful booking
             include_once('./view/partials/htmlHead.php');
+            include_once('./view/partials/header.php');
+            include_once('./view/partials/nav.php');
             echo "<div class='text-center'><h5 class='text-success'>Booking successful.</h5></div>";
+           
         } else {
             // No more rooms available
             include_once('./view/partials/htmlHead.php');

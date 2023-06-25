@@ -46,3 +46,4 @@ include_once('./view/partials/nav.php');
     </div>
 
 </body>
+<?php include_once('./view/partials/footer.php');  ?>

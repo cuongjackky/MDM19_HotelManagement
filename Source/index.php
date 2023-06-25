@@ -72,7 +72,7 @@ switch ($action) {
         break;
     case 'viewBookinghistory':
         $username = $_SESSION['nameOfuser'];
-        $controller = new BookingController();
+        $controller = new HotelController();
         $controller->getUserBookingHistory($username);
 
         break;
@@ -82,10 +82,9 @@ switch ($action) {
         require('./view/booking.php');
         break;
     case 'create_booking':
-        $controller = new bookingController();
-        $controller->createBooking($_REQUEST['hotelName'], $_REQUEST['guestName'], $_REQUEST['checkinDate'], $_REQUEST['checkoutDate']);
-        $hotelController = new hotelController();
-        $hotelController->updateHotelBooking($_REQUEST['hotelName'], $_REQUEST['guestName'], $_REQUEST['checkinDate'], $_REQUEST['checkoutDate']);
+       
+        $hotelController = new HotelController();
+        $hotelController->updateHotelBooking($_REQUEST['hotelName'], $_REQUEST['guestName'],$_REQUEST['num_room'], $_REQUEST['checkinDate'], $_REQUEST['checkoutDate']);
         break;
     default:
         //header('Location: ');
