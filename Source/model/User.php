@@ -14,14 +14,20 @@ class UserModel {
         
     }
 
-    public static function getUserByUn($un,$pw) {
+    /**
+     * @throws RedisException
+     */
+    public static function getUserByUn($un, $pw): bool
+    {
         $redis = DB::getRedisInstance();
-        $key = $un+$pw;
+        $key = "";
+        if($un != null && $pw != null){
+            $key = $un . $pw;
+        }
         $value = $redis->get($key);
         if ($value){
             return true;
         }
-        $redis->set('fuochuy101', 'nguyenfuochuy');
 
         $database = "MDM";
         $collection = "accounts";
@@ -29,8 +35,8 @@ class UserModel {
         $filter = ['username'   =>  $un,
                     'password'  =>  $pw];
         $result = $mongo->findOne($filter);
-        $redis->set($key, $result, 300);
         if ($result != null) {
+            $redis->set($key, $result, 300);
             return true;
         }
         else return false;
